@@ -11,9 +11,8 @@ def index(request):
     }
     return render(request, 'posts/index.html', context)
 
-
-def group_list(request):
-    return HttpResponse(f'Группа: {slug}')
+def group_posts(request):
+    return HttpResponse(f'Здесь будет информация о группах проекта Yatube')
 def group_detail(request, slug):
     return HttpResponse(f'Группа: {slug}')
 

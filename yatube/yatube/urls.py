@@ -19,7 +19,7 @@ from posts import views
 
 urlpatterns = [
     path('', views.index),
-    path('groups/', views.group_list),
+    path('groups/', views.group_posts, name='groups'),
     path('group/<slug:slug>', views.group_detail),
     path('posts/', views.post_detail),
     path('post/<pk>/', views.post_detail),

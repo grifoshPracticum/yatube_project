@@ -11,29 +11,36 @@
   </title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
-  <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
-  <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
 </head>
+
+
+<header>
+  <!-- Это тег шаблонизатора include, сюда будет включён код из файла includes/header.html -->
+  {% include 'templates/includes/header.html' %}
+</header>>
 
 <body>
 
-{% include 'nav.html' %}
 
 <main>
   <div class="container">
     <h1>
       {% block header %}
-        The Last Social Media You'll Ever Need
+        Test
       {% endblock %}
     </h1>
     {% block content %}
       <!-- Содержимое страницы -->
     {% endblock %}
   </div>
+
 </main>
-
-{% include 'footer.html' %}
-
+<footer>
+  <!-- Это тег шаблонизатора include, сюда будет включён код из файла includes/footer.html -->
+  {% include 'templates/includes/footer.html' %}
+</footer>
 </body>
-
 </html>
+
+
+
