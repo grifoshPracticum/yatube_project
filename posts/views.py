@@ -1,15 +1,17 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Post
+from posts.models import Post
 
 
 # Главная страница
 def index(request):
     posts = Post.objects.order_by('-pub_date')[:10]
+    string = 'Это кусочек текста, который вставлен в шаблоне через переменную'
     context = {
         'posts': posts,
+        'string': string ,
     }
-    return render(request, 'posts/index.html', context)
+    return render(request, 'base.html', context)
 
 def group_posts(request):
     return HttpResponse(f'Здесь будет информация о группах проекта Yatube')

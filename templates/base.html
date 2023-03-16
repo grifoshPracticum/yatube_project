@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+{# Однострочный комментарий #}
+{% comment %}
+  Многострочные комментарии
+  пишут между конструкциями
+{% endcomment %}.
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>
+    {% block title %}
+      Yatube | The Social Media, you can use
+    {% endblock %}
+  </title>
+</head>
+
+<body>
+{% include 'includes/header.html' %} {# Позволяет подключить кусок шаблона в нужное место #}
+
+<main>
+  <div class="container">
+    <h1>
+      {% block header %}
+        The Last Social Media You'll Ever Need (default header)
+      {% endblock %}
+    </h1>
+    {% block content %}
+    <p>Default content</p>
+    {% endblock %}
+
+    {{ string }}
+  </div>
+</main>
+
+{% include 'includes/footer.html' %}
+
+</body>
+
+</html>
