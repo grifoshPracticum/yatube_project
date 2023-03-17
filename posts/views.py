@@ -1,6 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from posts.models import Post
+from django.shortcuts import render, get_object_or_404
+from posts.models import Post, Group
 
 
 # Главная страница
@@ -9,14 +9,23 @@ def index(request):
     string = 'Это кусочек текста, который вставлен в шаблоне через переменную'
     context = {
         'posts': posts,
-        'string': string ,
     }
-    return render(request, 'base.html', context)
+    return render(request, 'index.html', context)
 
 def group_posts(request):
-    return HttpResponse(f'Здесь будет информация о группах проекта Yatube')
+    posts = Post.objects.order_by('-pub_date')[:10]
+    context = {
+        'posts': posts,
+    }
+    return render(request, 'index.html', context)
 def group_detail(request, slug):
-    return HttpResponse(f'Группа: {slug}')
+    group = get_object_or_404(Group, slug=slug)
+    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
+    context = {
+        'group': group,
+        'posts': posts,
+    }
+    return render(request, 'posts/group_list.html', context)
 
 
 def post_list(request):

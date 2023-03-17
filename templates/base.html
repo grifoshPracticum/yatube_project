@@ -17,11 +17,15 @@
       Yatube | The Social Media, you can use
     {% endblock %}
   </title>
+<!--  Подгрузка статики-->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="icon" href="{% static 'img/icon.png' %}">
+
 </head>
 
 <body>
 {% include 'includes/header.html' %} {# Позволяет подключить кусок шаблона в нужное место #}
-
 <main>
   <div class="container">
     <h1>
